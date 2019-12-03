@@ -1,12 +1,22 @@
 const express = require('express');
+const db = require('../db/index.js');
+const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const port = 3003;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', express.static(path.join(__dirname,'../client/dist')))
 app.listen(port, () => console.log(`app listening on port ${port}!`));
 
-app.get('/image', (req, res) => {
-  
+app.get('/:restName/images', (req, res) => {
+  db.gallery.get(req.params, (err, data) => {
+    if(err){
+      res.status(400).send();
+    } else{
+      res.status(200).send(data);
+    }
+  });
 });

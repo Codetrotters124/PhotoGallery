@@ -10,8 +10,8 @@ var restGallerySchema = new Schema({
 var restGallery = mongoose.model('restGallery', restGallerySchema);
 
 var gallery = {
-  get: (cb) => {
-    restGallery.find((err, data) => {
+  get: (params ,cb) => {
+    restGallery.find(params, (err, data) => {
       if(err){
         cb(err);
       } else{
