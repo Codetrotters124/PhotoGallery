@@ -1,6 +1,8 @@
 import React from 'react';
+import Header from './Header.jsx';
 import { throws } from 'assert';
 const {ajax} = require('jquery');
+
 
 class App extends React.Component{
   constructor(props){
@@ -20,8 +22,7 @@ class App extends React.Component{
   render(){
     return(
       <div>
-        {console.log(this.state.gallery)}
-        <h1>Hello In App</h1>
+        <Header/>
       </div>);
   }
 }
