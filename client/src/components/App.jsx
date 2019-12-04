@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header.jsx';
+import Gallery from './Gallery.jsx';
 import { throws } from 'assert';
 const {ajax} = require('jquery');
 
@@ -21,8 +22,9 @@ class App extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='grid'>
         <Header/>
+        <Gallery/>
       </div>);
   }
 }
