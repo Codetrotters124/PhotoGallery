@@ -20,3 +20,13 @@ app.get('/:restName/images', (req, res) => {
     }
   });
 });
+
+app.delete('/:restName/delete', (req, res) => {
+  db.gallery.drop(req.params, (err) => {
+    if(err) {
+      res.status(400).send();
+    } else {
+      res.status(200).send();
+    }
+    });
+})

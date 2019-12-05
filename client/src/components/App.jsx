@@ -8,7 +8,7 @@ const {ajax} = require('jquery');
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {gallery: []}
+    this.state = {gallery: [], id: ''}
   }
 
   componentDidMount(){
@@ -16,7 +16,7 @@ class App extends React.Component{
       method: 'GET',
       url: `/${this.props.restName}/images`,
       error: (err) => console.log(`ERROR: method:GET url: /${this.props.restName}/images - ${err}`),
-      success: (data) => this.setState({gallery: data})
+      success: ({images, _id}) => this.setState({gallery: images, id: _id})
     });
   }
 
@@ -24,7 +24,7 @@ class App extends React.Component{
     return(
       <div className='grid'>
         <Header/>
-        <Gallery/>
+        <Gallery gallery={this.state.gallery}/>
       </div>);
   }
 }
