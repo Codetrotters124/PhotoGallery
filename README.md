@@ -37,6 +37,5 @@ npm install -D babel-loader @babel/core @babel/preset-env
 npm install --save-dev @babel/preset-react
 npm install react react-dom
 npm install axios body-parser express jquery mongoose
-
 npm install
 ```
