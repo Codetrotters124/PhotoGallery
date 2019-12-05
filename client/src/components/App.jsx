@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
-import { throws } from 'assert';
 const {ajax} = require('jquery');
 
 
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {gallery: [], id: ''}
+    this.state = {gallery:[], id:''};
   }
 
   componentDidMount(){
@@ -16,7 +15,7 @@ class App extends React.Component{
       method: 'GET',
       url: `/${this.props.restName}/images`,
       error: (err) => console.log(`ERROR: method:GET url: /${this.props.restName}/images - ${err}`),
-      success: ({images, _id}) => this.setState({gallery: images, id: _id})
+      success: ({_id, images}) => this.setState({id:_id, gallery:images})
     });
   }
 

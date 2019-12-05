@@ -45,7 +45,7 @@
   float: left;
 }
 
-.gridwrapper > #content3 {
+.gridwrapper > #content3 > img {
   width: 16.45%;
   height: 100%;
   float: left;
@@ -58,7 +58,7 @@
   float: left;
 }
 
-.grid0 > #g0content1 {
+.grid0 > #g0content1 > img{
   width: 72.25%;
   height: 100%;
   float: left;
@@ -71,7 +71,7 @@
   float: left;
 }
 
-.grid1 >  #g1content1 {
+.grid1 >  #g1content1 > img {
   width: 66.5%;
   height: 100%;
   float: left;

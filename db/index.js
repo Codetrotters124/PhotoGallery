@@ -11,7 +11,7 @@ var restGallery = mongoose.model('restGallery', restGallerySchema);
 
 var gallery = {
   get: (params ,cb) => {
-    restGallery.findOne(params, 'images', {'limit': 10}, (err, data) => {
+    restGallery.findOne(params, 'images', (err, data) => {
       if(err){
         cb(err);
       } else{
