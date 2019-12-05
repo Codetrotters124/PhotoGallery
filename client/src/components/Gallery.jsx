@@ -1,13 +1,14 @@
- import React from 'react';
-import InnerGallery from './InnerGallery.jsx';
+import React from 'react';
+import Grid0 from './Grid0.jsx';
+import Grid1 from './Grid1.jsx';
 
 const Gallery = (props) => {
   return(
     <section className='gridwrapper'>
-      <article id='content1'><InnerGallery/></article>
-      <article id='content2'><InnerGallery/></article>
-      <article id='content2'><InnerGallery/></article>
-      <article id='content3'>4</article>
+      <article id='content1'><Grid0/></article>
+      <article id='content2'><Grid1/></article>
+      <article id='content2'><Grid1/></article>
+      <article id='content3'>5</article>
     </section>);
 };
 
