@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
-const {ajax} = require('jquery');
-import styled from 'styled-components';
+import Modal from './Modal.jsx';
 
 
 const Div = styled.div``;
@@ -40,6 +41,7 @@ class App extends React.Component{
       <Div>
         <Header/>
         <Gallery gallery={this.state.gallery} event={this.photoGallery}/>
+        <Modal/>
       </Div>);
   }
 }
