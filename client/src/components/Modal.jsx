@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Trigger = styled.button`
-
-`;
-
 const ModalClass = styled.div`
   position: fixed;
   left: 0;
@@ -43,40 +39,17 @@ class Modal extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = {
-      opacity: '0', 
-      visibility: 'hidden',
-      scale: '1.1',
-      linear: '0.25s'
-    }
-
-    this.toggleModal = this.toggleModal.bind(this);
     this.toggleClose = this.toggleClose.bind(this);
   }
 
-  toggleModal(){
-    this.setState({
-      opacity: '1', 
-      visibility: 'visible',
-      scale: '1.0',
-      linear: '0s'
-    });
-  }
-
   toggleClose(){
-    this.setState({
-      opacity: '0', 
-      visibility: 'hidden',
-      scale: '1.1',
-      linear: '0.25s'
-    });
+    this.props.event(); 
   }
 
   render(){
     return(
       <div>
-        <Trigger onClick={this.toggleModal}>Click Here</Trigger>
-        <ModalClass opacity={this.state.opacity} visibility={this.state.visibility} scale={this.state.scale} linear={this.state.linear}>
+        <ModalClass opacity={this.props.modal.opacity} visibility={this.props.modal.visibility} scale={this.props.modal.scale} linear={this.props.modal.linear}>
           <ModalContent>
             <CloseModal onClick={this.toggleClose}>&times;</CloseModal>
             <h1>Hello, I am a modlal!</h1>

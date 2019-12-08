@@ -6,14 +6,27 @@ import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
 
 
-const Div = styled.div``;
+const ModalClass = styled.div`
+  visibility: ${props => props.visibility};
+`;
 
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {gallery:[], id:''};
+    
+    this.state = {
+      gallery:[], 
+      id:'',
+      modal: {
+        opacity: '0', 
+        visibility: 'hidden',
+        scale: '1.1',
+        linear: '0.25s'
+      }
+    };
 
     this.photoGallery = this.photoGallery.bind(this);
+    this.toggleClose = this.toggleClose.bind(this);
   }
 
   componentDidMount(){
@@ -27,22 +40,43 @@ class App extends React.Component{
 
   photoGallery(id){
     let url = `${this.props.restName}/images/_id/${id}`;
+    console.log(id);
     
-    ajax({
-      method: 'GET',
-      url: url,
-      error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
-      success: console.log('PhotoGallery')
+    // ajax({
+    //   method: 'GET',
+    //   url: url,
+    //   error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
+    //   success: console.log('PhotoGallery')
+    // });
+
+    this.setState({
+      modal: {
+        opacity: '1', 
+        visibility: 'visible',
+        scale: '1.0',
+        linear: '0s'
+      }
+    })
+  }
+
+  toggleClose(){
+    this.setState({
+      modal: {
+        opacity: '0', 
+        visibility: 'hidden',
+        scale: '1.1',
+        linear: '0.25s'
+      }
     });
   }
 
   render(){
     return(
-      <Div>
+      <div>
         <Header/>
         <Gallery gallery={this.state.gallery} event={this.photoGallery}/>
-        <Modal/>
-      </Div>);
+        <Modal event={this.toggleClose} modal={this.state.modal}/>
+      </div>);
   }
 }
 
