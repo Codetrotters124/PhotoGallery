@@ -1,6 +1,7 @@
 import React from 'react';
 import InGrid from './InGrid.jsx';
 import styled from 'styled-components';
+import { throws } from 'assert';
 
 
 const LeftDiv = styled.div`
@@ -24,13 +25,19 @@ const Div = styled.div`
 class Grid0 extends React.Component{
   constructor(props){
     super(props);
+    this.handleEvent = this.handleEvent.bind(this);
+  }
+
+  handleEvent(event){
+    let id = this.props.images[2]._id;
+    this.props.event(id);
   }
 
   render(){
     return(
       <Div>
-        <LeftDiv><InGrid images={this.props.images.slice(0,2)}/></LeftDiv>
-        <RightDiv url={this.props.images[2] ? this.props.images[2].url : undefined} ></RightDiv>
+        <LeftDiv><InGrid images={this.props.images.slice(0,2)} event={this.props.event}/></LeftDiv>
+        <RightDiv url={this.props.images[2] ? this.props.images[2].url : undefined} onClick={this.handleEvent}></RightDiv>
       </Div>);
   }
 }

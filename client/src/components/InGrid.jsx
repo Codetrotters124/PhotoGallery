@@ -14,13 +14,19 @@ const Div = styled.div`
 class InGrid extends React.Component{
   constructor(props){
     super(props);
+
+    this.handleEvent = this.handleEvent.bind(this);
+  }
+
+  handleEvent(event){
+    this.props.event(event.target.id);
   }
 
   render(){
     return(
       <div>
-        <Div marginBottom={'.25em'} url={this.props.images[0] ? this.props.images[0].url : undefined}></Div>
-        <Div marginBottom={'0em'} url={this.props.images[1] ? this.props.images[1].url : undefined}></Div>
+        <Div id={this.props.images[0] ? this.props.images[0]._id : undefined} marginBottom={'.25em'} url={this.props.images[0] ? this.props.images[0].url : undefined} onClick={this.handleEvent}></Div>
+        <Div id={this.props.images[1] ? this.props.images[1]._id : undefined} marginBottom={'0em'} url={this.props.images[1] ? this.props.images[1].url : undefined} onClick={this.handleEvent}></Div>
       </div>)
   }
 }

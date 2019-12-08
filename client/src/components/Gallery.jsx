@@ -24,18 +24,31 @@ const Div = styled.div`
   background-image: url(${props => props.url});
 `;
 
-const Gallery = (props) => {
-  return(
-    <PositionDiv>
-      <OverflowDiv>
-        <FlexDiv>
-          <Grid images={props.gallery.slice(0,3)}/>
-          <Grid images={props.gallery.slice(3,6)}/>
-          <Grid images={props.gallery.slice(6,9)}/>
-          <Div url={props.gallery[9] ? props.gallery[9].url : undefined}></Div>
-        </FlexDiv>
-      </OverflowDiv>
-    </PositionDiv>);
-};
+class Gallery extends React.Component{
+  constructor(props){
+    super(props);
+    this.handleEvent = this.handleEvent.bind(this);
+  };
+
+  handleEvent(event){
+    let id = this.props.gallery[9]._id;
+    this.props.event(id);
+  }
+
+  render(){
+    return(
+      <PositionDiv>
+        <OverflowDiv>
+          <FlexDiv>
+            <Grid images={this.props.gallery.slice(0,3)} event={this.props.event}/>
+            <Grid images={this.props.gallery.slice(3,6)} event={this.props.event}/>
+            <Grid images={this.props.gallery.slice(6,9)} event={this.props.event}/>
+            <Div url={this.props.gallery[9] ? this.props.gallery[9].url : undefined} onClick={this.handleEvent}></Div>
+          </FlexDiv>
+        </OverflowDiv>
+      </PositionDiv>);
+  };
+}
+
 
 export default Gallery;

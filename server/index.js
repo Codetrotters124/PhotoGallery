@@ -21,6 +21,10 @@ app.get('/:restName/images', (req, res) => {
   });
 });
 
+app.get('/:restName/images/_id/:_id', (req, res) => {
+  console.log(req.params);
+})
+
 app.delete('/:restName/delete', (req, res) => {
   db.gallery.drop(req.params, (err) => {
     if(err) {

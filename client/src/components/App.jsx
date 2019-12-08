@@ -11,6 +11,8 @@ class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {gallery:[], id:''};
+
+    this.photoGallery = this.photoGallery.bind(this);
   }
 
   componentDidMount(){
@@ -22,11 +24,22 @@ class App extends React.Component{
     });
   }
 
+  photoGallery(id){
+    let url = `${this.props.restName}/images/_id/${id}`;
+    
+    ajax({
+      method: 'GET',
+      url: url,
+      error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
+      success: console.log('PhotoGallery')
+    });
+  }
+
   render(){
     return(
       <Div>
         <Header/>
-        <Gallery gallery={this.state.gallery}/>
+        <Gallery gallery={this.state.gallery} event={this.photoGallery}/>
       </Div>);
   }
 }
