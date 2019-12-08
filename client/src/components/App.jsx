@@ -2,7 +2,10 @@ import React from 'react';
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 const {ajax} = require('jquery');
+import styled from 'styled-components';
 
+
+const Div = styled.div``;
 
 class App extends React.Component{
   constructor(props){
@@ -21,10 +24,10 @@ class App extends React.Component{
 
   render(){
     return(
-      <div className='grid'>
+      <Div>
         <Header/>
         <Gallery gallery={this.state.gallery}/>
-      </div>);
+      </Div>);
   }
 }
 

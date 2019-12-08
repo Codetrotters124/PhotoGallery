@@ -1,13 +1,28 @@
 import React from 'react';
-import Photo from './Photo.jsx';
+import styled from 'styled-components';
 
-const InGrid0 = (props) => {
-  return(
-    <section className='in_grid'>
-      {console.log(props.images)}
-      <article id='ig_content0'>0</article>
-      <article id='ig_content1'>2</article>
-    </section>);
+const Div = styled.div`
+  height: 142px;
+  flex-shrink: 0;
+  background-size: cover;
+  width: 142px;
+  margin-bottom: ${props => props.marginBottom};
+  background-image: url(${props => props.url});
+`;
+
+
+class InGrid extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    return(
+      <div>
+        <Div marginBottom={'.25em'} url={this.props.images[0] ? this.props.images[0].url : undefined}></Div>
+        <Div marginBottom={'0em'} url={this.props.images[1] ? this.props.images[1].url : undefined}></Div>
+      </div>)
+  }
 }
 
-export default InGrid0;
+export default InGrid;
