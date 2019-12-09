@@ -74,7 +74,7 @@ class Modal extends React.Component{
     super(props);
 
     this.state ={
-      index: undefined,
+      index: undefined
     };
 
     this.toggleClose = this.toggleClose.bind(this);
@@ -82,28 +82,12 @@ class Modal extends React.Component{
   }
 
   toggleClose(){
-    this.props.event(); 
+    this.props.eventClose(); 
     this.setState({index: undefined});
   }
 
   nextORpre(event){
-    let index = undefined;
-    let lenght = this.props.gallery.length;
-
-    if(this.state.index === undefined){
-      index = this.update();
-    } else {
-      index = this.state.index;
-    }
-    
-    
-  }
-
-  update(){
-    this.setState({
-      index: this.props.index,
-    });
-    return this.props.index;
+    this.props.event(event.target.id);
   }
 
   render(){
@@ -112,7 +96,7 @@ class Modal extends React.Component{
         <CloseCursor onClick={this.toggleClose}>&times;</CloseCursor>
         <ModalContent>
           <Slides>
-            <Image src={this.props.gallery[this.props.index] ? this.props.gallery[this.props.index].url : undefined}/>
+            <Image src={this.props.url}/>
           </Slides>
           <Prev onClick={this.nextORpre} id={-1}>&#10094;</Prev>
           <Next onClick={this.nextORpre} id={1}>&#10095;</Next>

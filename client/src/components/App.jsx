@@ -12,6 +12,7 @@ class App extends React.Component{
       gallery:[], 
       id:'',
       index: undefined,
+      url: '',
       modal: {
         opacity: '0', 
         visibility: 'hidden',
@@ -22,6 +23,7 @@ class App extends React.Component{
 
     this.photoGallery = this.photoGallery.bind(this);
     this.toggleClose = this.toggleClose.bind(this);
+    this.updateGallery = this.updateGallery.bind(this);
   }
 
   componentDidMount(){
@@ -35,9 +37,11 @@ class App extends React.Component{
 
   photoGallery(id){
     let index = undefined;
+    let _url = undefined
 
-    this.state.gallery.map(({_id}, key) => {
+    this.state.gallery.map(({_id, url}, key) => {
       if(id === _id){
+        _url = url;
         index = key;
         return;
       }
@@ -52,12 +56,27 @@ class App extends React.Component{
 
     this.setState({
       index: index,
+      url: _url,
       modal: {
         opacity: '1', 
         visibility: 'visible',
         scale: '1.0',
         linear: '0s'
       }
+    });
+  }
+
+  updateGallery(val){
+    let length = this.state.gallery.length;
+    let index = this.state.index + Number(val);
+    
+    if(index === length){
+      index = 0;
+    }
+
+    this.setState({
+      index: index,
+      url: this.state.gallery[index].url
     });
   }
 
@@ -77,7 +96,7 @@ class App extends React.Component{
       <div>
         <Header/>
         <Gallery gallery={this.state.gallery} event={this.photoGallery}/>
-        <Modal event={this.toggleClose} modal={this.state.modal} index={this.state.index} gallery={this.state.gallery}/>
+        <Modal eventClose={this.toggleClose} event={this.updateGallery} modal={this.state.modal} url={this.state.url}/>
       </div>);
   }
 }
