@@ -10,15 +10,24 @@ var restGallerySchema = new Schema({
 var restGallery = mongoose.model('restGallery', restGallerySchema);
 
 var gallery = {
-  get: (params ,cb) => {
-    restGallery.findOne(params, 'images', (err, data) => {
+  getLimit: ({restName, limit} ,cb) => {
+    restGallery.findOne({restName: restName}, 'images', (err, data) => {
       if(err){
         cb(err);
       } else{
-        cb(null, data);
+        cb(null, {_id: data._id, images: data.images.slice(0, limit)});
       }
     })
-  }, 
+  },
+  get: ({restName}, cb) => {
+    restGallery.findOne({restName: restName}, 'images', (err, data) => {
+      if(err){
+        cb(err);
+      } else {
+        cb(null, data);
+      }
+    });
+  },
   insert: (arr, cb) => {
     restGallery.create(arr,(err) => {
       if(err){

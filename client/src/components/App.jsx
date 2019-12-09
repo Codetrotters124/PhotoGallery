@@ -27,12 +27,30 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    ajax({
-      method: 'GET',
-      url: `/${this.props.restName}/images`,
-      error: (err) => console.log(`ERROR: method:GET url: /${this.props.restName}/images - ${err}`),
-      success: ({_id, images}) => this.setState({id:_id, gallery:images})
+    this.getGallery((data) => {
+      this.setState({
+        gallery: data.gallery,
+        _id: data._id
+      });
     });
+  }
+
+  getGallery(cb){
+    var promise = new Promise((res, rej) => {
+      ajax({
+          method: 'GET',
+          url: `/${this.props.restName}/images/10`,
+          error: (err) => console.log(`ERROR: method:GET url: /${this.props.restName}/images - ${err}`),
+          success: ({_id, images}) => {
+            res({_id: _id, gallery: images})
+          }
+        });
+    })
+
+    promise.then((obj) => {
+      cb(obj);
+    });
+
   }
 
   photoGallery(id){
@@ -47,21 +65,22 @@ class App extends React.Component{
       }
     });
 
-    // ajax({
-    //   method: 'GET',
-    //   url: `${this.props.restName}/images/_id/${id}`,
-    //   error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
-    //   success: console.log('PhotoGallery')
-    // });
-
-    this.setState({
-      index: index,
-      url: _url,
-      modal: {
-        opacity: '1', 
-        visibility: 'visible',
-        scale: '1.0',
-        linear: '0s'
+    ajax({
+      method: 'GET',
+      url: `/${this.props.restName}/${id}/images`,
+      error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
+      success: (data) => {
+        this.setState({
+          index: index,
+          url: _url,
+          gallery: data.images,
+          modal: {
+            opacity: '1', 
+            visibility: 'visible',
+            scale: '1.0',
+            linear: '0s'
+          }
+        });
       }
     });
   }
@@ -83,14 +102,18 @@ class App extends React.Component{
   }
 
   toggleClose(){
-    this.setState({
-      modal: {
-        opacity: '0', 
-        visibility: 'hidden',
-        scale: '1.1',
-        linear: '0.25s'
-      }
-    });
+    this.getGallery((data) => {
+      this.setState({
+        gallery: data.gallery,
+        _id: data._id,
+        modal: {
+          opacity: '0', 
+          visibility: 'hidden',
+          scale: '1.1',
+          linear: '0.25s'
+          }
+      });
+    })
   }
 
   render(){
