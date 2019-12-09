@@ -1,14 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
-
-
-const ModalClass = styled.div`
-  visibility: ${props => props.visibility};
-`;
 
 class App extends React.Component{
   constructor(props){
@@ -17,6 +11,7 @@ class App extends React.Component{
     this.state = {
       gallery:[], 
       id:'',
+      index: undefined,
       modal: {
         opacity: '0', 
         visibility: 'hidden',
@@ -39,24 +34,31 @@ class App extends React.Component{
   }
 
   photoGallery(id){
-    let url = `${this.props.restName}/images/_id/${id}`;
-    console.log(id);
-    
+    let index = undefined;
+
+    this.state.gallery.map(({_id}, key) => {
+      if(id === _id){
+        index = key;
+        return;
+      }
+    });
+
     // ajax({
     //   method: 'GET',
-    //   url: url,
+    //   url: `${this.props.restName}/images/_id/${id}`,
     //   error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
     //   success: console.log('PhotoGallery')
     // });
 
     this.setState({
+      index: index,
       modal: {
         opacity: '1', 
         visibility: 'visible',
         scale: '1.0',
         linear: '0s'
       }
-    })
+    });
   }
 
   toggleClose(){
@@ -75,7 +77,7 @@ class App extends React.Component{
       <div>
         <Header/>
         <Gallery gallery={this.state.gallery} event={this.photoGallery}/>
-        <Modal event={this.toggleClose} modal={this.state.modal}/>
+        <Modal event={this.toggleClose} modal={this.state.modal} index={this.state.index} gallery={this.state.gallery}/>
       </div>);
   }
 }
