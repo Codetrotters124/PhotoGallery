@@ -70,8 +70,10 @@ class App extends React.Component{
     let length = this.state.gallery.length;
     let index = this.state.index + Number(val);
     
-    if(index === length){
+    if(index > length - 1){
       index = 0;
+    } else if(index < 0){
+      index = length - 1;
     }
 
     this.setState({
