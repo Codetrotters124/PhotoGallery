@@ -11,6 +11,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/', express.static(path.join(__dirname,'../client/dist')))
 app.listen(port, () => console.log(`app listening on port ${port}!`));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.get('/:restName/images/:limit', (req, res) => {
   db.gallery.getLimit(req.params, (err, data) => {
     if(err){
