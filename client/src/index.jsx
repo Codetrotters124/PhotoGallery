@@ -4,4 +4,4 @@ import App from './components/App.jsx';
 
 var restName = 'absinthe-brasserie-and-bar';
 
-ReactDOM.render(<App restName={restName}/>, document.getElementById('app'));
+ReactDOM.render(<App restName={restName}/>, document.getElementById('gallery'));
