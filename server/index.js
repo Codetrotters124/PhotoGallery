@@ -8,7 +8,8 @@ const port = 3003;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/', express.static(path.join(__dirname,'../client/dist')))
+app.use('/', express.static(path.join(__dirname,'../client/dist')));
+app.use('/:bundle', express.static(path.join(__dirname,'../client/dist')));
 app.listen(port, () => console.log(`app listening on port ${port}!`));
 
 app.use((req, res, next) => {
