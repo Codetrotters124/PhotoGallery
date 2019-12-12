@@ -3,8 +3,6 @@ const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
-const port = 3003;
-const host = `http://localhost:${port}`; 
 
 class App extends React.Component{
   constructor(props){
@@ -41,8 +39,8 @@ class App extends React.Component{
     var promise = new Promise((res, rej) => {
       ajax({
           method: 'GET',
-          url: `${host}/${this.props.restName}/images/10`,
-          error: (err) => console.log(`ERROR: method:GET url: /${this.props.restName}/images - ${err}`),
+          url: `${this.props.url}/images/10`,
+          error: (err) => console.log(`ERROR: method:GET url: /${this.props.restNameID}/images - ${err}`),
           success: ({_id, images}) => {
             res({_id: _id, gallery: images})
           }
@@ -69,7 +67,7 @@ class App extends React.Component{
 
     ajax({
       method: 'GET',
-      url: `${host}/${this.props.restName}/${id}/images`,
+      url: `${this.props.url}/${id}/images`,
       error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
       success: (data) => {
         this.setState({

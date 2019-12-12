@@ -1,157 +1,34 @@
 const db = require('./index.js');
 
-const sample = {
-  restName: 'absinthe-brasserie-and-bar',
-  images: [
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372549.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372550.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372551.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372552.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372553.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372554.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/23372555.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054224.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054226.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054227.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054228.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054229.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054230.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054232.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054233.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054234.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/24054235.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25049347.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25231636.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25607915.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720969.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720970.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720971.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720972.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720973.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720974.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720975.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720976.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720977.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720978.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720979.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720980.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720981.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720982.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25720984.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    },
-    {
-      url:'https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/25730593.jpg',
-      created_date:'Jan 1, 2019 5:31:46 PM GMT-0800'
-    }
-  ]
-};
+const s3pictures = () => {
+  var mockdata_img = [];
+  let range = 10 + Math.floor(Math.random() * Math.floor(30 - 10));
+
+  for(let i = 0; i < range; i++){
+    let ranNum = prependZero(Math.floor(Math.random() * Math.floor(36)));
+    let url = `https://hrsf124-fec.s3-us-west-1.amazonaws.com/opentable-mockdata/mockdata_img/233725${ranNum}.jpg`;
+    let created_date = 'Jan 1, 2019 5:31:46 PM GMT-0800';
+    mockdata_img.push({url: url, created_date: created_date});
+  }
+  
+  return mockdata_img;
+}
+
+const prependZero = (n) => {
+  return n > 9 ? "" + n: "0" + n;
+}
+
+const seed = () => {
+  var sample = []
+  for(let i = 0; i < 100; i++){
+    sample.push({restName: i, images: s3pictures()})
+  }
+  return sample;
+}
 
 const insertSampleGallery =  ()  => {
-  let arr = [sample];
+  let arr = seed();
+
   db.gallery.insert(arr, (err) => {
     if(err){
       console.log('Error: ', err);
@@ -163,4 +40,5 @@ const insertSampleGallery =  ()  => {
 };
 
 insertSampleGallery();
+
 
