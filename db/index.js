@@ -24,7 +24,6 @@ var gallery = {
       if(err){
         cb(err);
       } else {
-        console.log(data) 
         cb(null, data);
       }
     });
