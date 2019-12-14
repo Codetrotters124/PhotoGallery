@@ -20,9 +20,7 @@ const prependZero = (n) => {
 
 const seed = () => {
   var sample = []
-  for(let i = 0; i < 100; i++){
-    sample.push({restName: i, images: s3pictures()})
-  }
+  sample.push({restName: 'monsieur-benjamin', images: s3pictures()})
   return sample;
 }
 
@@ -40,5 +38,3 @@ const insertSampleGallery =  ()  => {
 };
 
 insertSampleGallery();
-
-

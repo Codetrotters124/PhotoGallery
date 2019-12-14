@@ -1,7 +1,7 @@
+  
 import React from 'react';
-import InGrid from './InGrid.jsx';
+import InnerGrid from './InnerGrid.jsx';
 import styled from 'styled-components';
-import { throws } from 'assert';
 
 
 const LeftDiv = styled.div`
@@ -22,7 +22,7 @@ const Div = styled.div`
   margin: 0 .25rem 0 0;
 `;
 
-class Grid0 extends React.Component{
+class Grid extends React.Component{
   constructor(props){
     super(props);
     this.handleEvent = this.handleEvent.bind(this);
@@ -36,10 +36,10 @@ class Grid0 extends React.Component{
   render(){
     return(
       <Div>
-        <LeftDiv><InGrid images={this.props.images.slice(0,2)} event={this.props.event}/></LeftDiv>
+        <LeftDiv><InnerGrid images={this.props.images.slice(0,2)} event={this.props.event}/></LeftDiv>
         <RightDiv url={this.props.images[2] ? this.props.images[2].url : undefined} onClick={this.handleEvent}></RightDiv>
       </Div>);
   }
 }
 
-export default Grid0;
+export default Grid;

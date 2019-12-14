@@ -1,7 +1,6 @@
 # PhotoGallery
 
 > Project description
-
 ## Related Projects
 
   - https://github.com/Codetrotters124/Reservations
@@ -17,7 +16,6 @@
 ## Usage
 
 > Some usage instructions
-
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).

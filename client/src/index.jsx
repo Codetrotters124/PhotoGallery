@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App.jsx';
-const host = window.location.href.split('/')
 
-var restName = '0';
-let url = `http://${host[2]}/${host[3] ? host[3] : restName.toString()}`
+var restName = 'monsieur-benjamin';
 
-ReactDOM.render(<App url={url}/>, document.getElementById('gallery'));
+ReactDOM.render(<App restName={restName}/>, document.getElementById('gallery'));

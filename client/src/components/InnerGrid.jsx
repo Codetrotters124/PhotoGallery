@@ -11,7 +11,7 @@ const Div = styled.div`
 `;
 
 
-class InGrid extends React.Component{
+class InnerGrid extends React.Component{
   constructor(props){
     super(props);
 
@@ -31,4 +31,4 @@ class InGrid extends React.Component{
   }
 }
 
-export default InGrid;
+export default InnerGrid;

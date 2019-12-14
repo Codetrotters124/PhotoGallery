@@ -1,23 +1,18 @@
 const express = require('express');
-const db = require('../db/index.js');
-const bodyParser = require('body-parser');
+const cors = require('cors');
+const path = require('path')
+const db = require('../db/index.js')
 const app = express();
-const path = require('path');
-const port = 3003;
+const port = 3002;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
-app.use('/:restNameID', express.static(path.join(__dirname,'../client/dist')));
-app.use('/', express.static(path.join(__dirname,'../client/dist')));
-app.listen(port, () => console.log(`app listening on port ${port}!`));
+app.use(cors());
+app.use('/', express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 
-app.get('/:restNameID/images/:limit', (req, res) => {
+
+app.get('/:restName/images/:limit', (req, res) => {
   db.gallery.getLimit(req.params, (err, data) => {
     if(err){
       res.status(400).send();
@@ -27,7 +22,7 @@ app.get('/:restNameID/images/:limit', (req, res) => {
   });
 });
 
-app.get('/:restNameID/:_id/images', (req, res) => {
+app.get('/:restName/images', (req, res) => {
   db.gallery.get(req.params, (err, data) => {
     if(err){
       res.status(400).send();
@@ -37,7 +32,7 @@ app.get('/:restNameID/:_id/images', (req, res) => {
   });
 })
 
-app.get('/:restNameID', (req, res) => {
+app.get('/:restName', (req, res) => {
   db.gallery.get(req.params, (err, data) => {
     if(err){
       res.status(400).send();
@@ -56,3 +51,5 @@ app.delete('/:restNameID/delete', (req, res) => {
     }
     });
 })
+
+app.listen(port, () => console.log(`App listening on port ${port}!`));

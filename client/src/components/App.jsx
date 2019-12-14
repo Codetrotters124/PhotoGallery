@@ -3,11 +3,12 @@ const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
+const host = window.location.href.split('/');
 
 class App extends React.Component{
   constructor(props){
     super(props);
-    
+
     this.state = {
       gallery:[], 
       id:'',
@@ -27,7 +28,9 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    this.getGallery((data) => {
+    let url = `http://${host[2]}/${this.props.restName}`;
+
+    this.getGallery(url, (data) => {
       this.setState({
         gallery: data.gallery,
         _id: data._id
@@ -35,11 +38,11 @@ class App extends React.Component{
     });
   }
 
-  getGallery(cb){
+  getGallery(url, cb){
     var promise = new Promise((res, rej) => {
       ajax({
           method: 'GET',
-          url: `${this.props.url}/images/10`,
+          url: `${url}/images/10`,
           error: (err) => console.log(`ERROR: method:GET url: /${this.props.restNameID}/images - ${err}`),
           success: ({_id, images}) => {
             res({_id: _id, gallery: images})
@@ -67,7 +70,7 @@ class App extends React.Component{
 
     ajax({
       method: 'GET',
-      url: `${this.props.url}/${id}/images`,
+      url: `http://${host[2]}/${this.props.restName}/images`,
       error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
       success: (data) => {
         this.setState({
@@ -102,7 +105,9 @@ class App extends React.Component{
   }
 
   toggleClose(){
-    this.getGallery((data) => {
+    let url = `http://${host[2]}/${this.props.restName}`;
+
+    this.getGallery(url, (data) => {
       this.setState({
         gallery: data.gallery,
         _id: data._id,
@@ -127,3 +132,4 @@ class App extends React.Component{
 }
 
 export default App;
+
