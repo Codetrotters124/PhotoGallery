@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
-const Div = styled.div`
+const Div = window.styled.div`
   height: 142px;
   flex-shrink: 0;
   background-size: cover;

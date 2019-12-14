@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
-const MyModal = styled.div`
+const MyModal = window.styled.div`
+  z-index: 10;
   position: fixed;
   left: 0;
   top: 0;
@@ -14,7 +15,7 @@ const MyModal = styled.div`
   transition: visibility 0s linear ${props => props.linear}, opacity 0.25s 0s, transforn 0.25s;
 `;
 
-const CloseCursor = styled.span`
+const CloseCursor = window.styled.span`
   cursor: pointer;
   color: rgb(169,169,169);
   position: absolute;
@@ -24,7 +25,7 @@ const CloseCursor = styled.span`
   font-weight: lighter;
 `;
 
-const Controls = styled.span`
+const Controls = window.styled.span`
   cursor: pointer;
   position: absolute;
   top: 280px;
@@ -41,15 +42,15 @@ const Controls = styled.span`
   -webkit-user-select: none;
 `;
 
-const Next = styled(Controls)`
+const Next = window.styled(Controls)`
   right: 0;
   border-radius: 3px 0 0 3px;
   left: 500px;
 `;
 
-const Prev = styled(Controls)``;
+const Prev = window.styled(Controls)``;
 
-const ModalContent = styled.div`
+const ModalContent = window.styled.div`
   position: relative;
   top: 50px;
   background-color: #fefefe;
@@ -59,13 +60,13 @@ const ModalContent = styled.div`
   max-width: 500px;
 `;
 
-const Image = styled.img`
+const Image = window.styled.img`
   height: 500px;
   width: 500px;
   margin-bottom: -4px;
 `;
 
-const Slides = styled.div`
+const Slides = window.styled.div`
   display: block;
 `;
 

@@ -50,4 +50,4 @@ app.delete('/:restNameID/delete', (req, res) => {
     });
 })
 
-app.listen(port, () => console.log(`${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}!`));

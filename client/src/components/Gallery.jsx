@@ -1,21 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 import Grid from './Grid.jsx';
 
-const PositionDiv = styled.div`
+const PositionDiv = window.styled.div`
   position: relative;
 `;
 
-const OverflowDiv = styled.div`
+const OverflowDiv = window.styled.div`
   overflow: hidden;
 `;
 
-const FlexDiv = styled.div`
+const FlexDiv = window.styled.div`
   display: flex;
   background-color: #2d333f;
 `;
 
-const Div = styled.div`
+const Div = window.styled.div`
   background-size: cover;
   flex-shrink: 0;
   height: 288px;

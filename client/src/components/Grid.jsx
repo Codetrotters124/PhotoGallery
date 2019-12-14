@@ -1,14 +1,13 @@
-  
 import React from 'react';
 import InnerGrid from './InnerGrid.jsx';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
 
-const LeftDiv = styled.div`
+const LeftDiv = window.window.styled.div`
   width: 142px;
 `;
 
-const RightDiv = styled.div`
+const RightDiv = window.styled.div`
   height: 288px;
   flex-shrink: 0;
   background-size: cover;
@@ -17,7 +16,7 @@ const RightDiv = styled.div`
   background-image: url(${props => props.url});
 `;
 
-const Div = styled.div`
+const Div = window.styled.div`
   display: flex;
   margin: 0 .25rem 0 0;
 `;

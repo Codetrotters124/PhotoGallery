@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 
-const StaticHeader = styled.img`
+const StaticHeader = window.styled.img`
   overflow: auto;
   position: relative;
   max-width:100%;
