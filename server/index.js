@@ -5,10 +5,8 @@ const db = require('../db/index.js')
 const app = express();
 const port = 3002;
 
-
 app.use(cors());
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
-app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
 
@@ -52,4 +50,4 @@ app.delete('/:restNameID/delete', (req, res) => {
     });
 })
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(port, () => console.log(`${port}`));
