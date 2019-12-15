@@ -17,4 +17,4 @@ RUN npm install
 EXPOSE 3002
 
 # How do you start your app?
-CMD [ "npm", "server:dev" ]
+CMD [ "npm", "start" ]
