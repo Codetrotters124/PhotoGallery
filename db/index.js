@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/galleries', {useNewUrlParser: true});
+mongoose.connect('mongodb://database/galleries', {useNewUrlParser: true});
 var Schema = mongoose.Schema;
 
 var restGallerySchema = new Schema({
