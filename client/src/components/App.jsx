@@ -3,6 +3,7 @@ const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
+const host = window.location.host;
 const port = 3002;
 
 class App extends React.Component{
@@ -28,8 +29,7 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    let url = `http://localhost:${port}/${this.props.restName}`;
-
+    let url = `http://${host}/${this.props.restName}`;
     this.getGallery(url, (data) => {
       this.setState({
         gallery: data.gallery,
@@ -70,7 +70,7 @@ class App extends React.Component{
 
     ajax({
       method: 'GET',
-      url: `http://localhost:${port}/${this.props.restName}/images`,
+      url: `http://${host}/${this.props.restName}/images`,
       error: (err) => console.log(`ERROR: method:GET url: /${url} - ${err}`),
       success: (data) => {
         this.setState({
@@ -105,7 +105,7 @@ class App extends React.Component{
   }
 
   toggleClose(){
-    let url = `http://localhost:${port}/${this.props.restName}`;
+    let url = `http://${host}/${this.props.restName}`;
 
     this.getGallery(url, (data) => {
       this.setState({
