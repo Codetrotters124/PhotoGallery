@@ -3,8 +3,7 @@ const {ajax} = require('jquery');
 import Header from './Header.jsx';
 import Gallery from './Gallery.jsx';
 import Modal from './Modal.jsx';
-const host = window.location.host;
-const port = 3002;
+const host = '13.56.234.241';
 
 class App extends React.Component{
   constructor(props){
