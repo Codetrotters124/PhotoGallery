@@ -13,7 +13,7 @@ services:
     depends_on:
       - 'seeddb'
     ports:
-      - "3002:3002"
+      - "80:3002"
 
   database:
     image: mongo:latest
